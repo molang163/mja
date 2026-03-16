@@ -27,7 +27,7 @@ requires-python = ">=3.11"
 # environment already provide everything, nothing will be pulled from
 # the network when installing from source.
 dependencies = []
-authors = [{name = "molang"}]
+authors = [{name = "molang163"}]
 # Specify the licence using a simple SPDX expression, as recommended
 # by modern packaging guidelines.  This avoids the deprecation of
 # licence tables in `pyproject.toml`.  The actual licence text lives
