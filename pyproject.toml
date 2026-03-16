@@ -1,0 +1,82 @@
+# The build system defines which backend and bootstrap dependencies are
+# required when building this project.  A lower minimum version of
+# ``setuptools`` is specified here so that the package can be built in
+# environments without network access – recent versions of ``pip``
+# may attempt to download a newer ``setuptools`` when a high version
+# is listed.  If your environment has a newer version available
+# locally that will still be used, but a basic ``setuptools`` is
+# sufficient for this project.
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# Basic project metadata.  This final 1.0 release unifies all
+# previous patch versions into a single version
+# identifier.  There is no change in functionality; the focus remains
+# on packaging polish, documentation consistency and lightweight
+# automated checks.  The description continues to reflect the purpose
+# of the tool.
+name = "mja"
+version = "1.0"
+description = "Manjaro AUR isolation orchestrator"
+readme = "README.md"
+requires-python = ">=3.11"
+# The CLI has no direct runtime dependencies beyond the standard
+# library and tools that it shells out to.  Should your local
+# environment already provide everything, nothing will be pulled from
+# the network when installing from source.
+dependencies = []
+authors = [{name = "molang"}]
+# Specify the licence using a simple SPDX expression, as recommended
+# by modern packaging guidelines.  This avoids the deprecation of
+# licence tables in `pyproject.toml`.  The actual licence text lives
+# in the `LICENSE` file, which is included in the distribution via
+# MANIFEST.in and the `license-files` directive below.
+license = "GPL-3.0-or-later"
+# Include the licence file in both source and binary distributions.  This is
+# recognised by setuptools as the modern way to specify distribution data
+# related to licensing and supersedes the deprecated
+# `tool.setuptools.license-files` table.
+license-files = ["LICENSE"]
+classifiers = [
+  # Programming language classifiers help users and tooling discover
+  # supported Python versions.  Do not include a licence classifier here; the
+  # project now uses a SPDX licence expression (`license = "GPL-3.0-or-later"`),
+  # which supersedes the older classifier mechanism.  See PEP 639 for
+  # details.
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  # Additional classifiers reflect that this is a command‑line tool for
+  # Linux desktop users and is distributed under the GPL.
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "Operating System :: POSIX :: Linux",
+  # Removed the GPL licence classifier. Licence is already declared via
+  # the SPDX expression (`license = "GPL-3.0-or-later"`), making the
+  # classifier redundant and causing conflicts with modern packaging
+  # guidelines (see PEP 639).  Retain all other non‑licence classifiers.
+]
+
+[project.urls]
+Homepage = "https://github.com/molang/mja"
+Repository = "https://github.com/molang/mja"
+Issues = "https://github.com/molang/mja/issues"
+
+[project.scripts]
+mja = "mja.cli:main"
+mja-gui = "mja.gui.app:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["mja*"]
+
+# Include data files packaged with the Python modules.  The desktop entry
+# used by the GUI is stored in `mja/resources/` so that it can be
+# installed as part of the wheel.  Without this specification the
+# `.desktop` file would only be present in the source distribution and
+# inaccessible after installation.
+[tool.setuptools.package-data]
+mja = ["resources/*.desktop"]

@@ -1,0 +1,39 @@
+# Include essential documentation and licence files in the source distribution
+#
+# These directives ensure that when building a source distribution (sdist),
+# setuptools will package the top‑level documentation and licence files along
+# with the Python source.  Without an explicit MANIFEST.in, these markdown
+# files may be omitted from the generated archive, which would render the
+# release notes and test matrix unavailable to end users.  See
+# https://setuptools.pypa.io/en/latest/userguide/datafiles.html for details.
+
+include README.md
+include LICENSE
+include CHANGELOG.md
+# Include only the release notes for the current release.  Older
+# release notes remain in the repository but are no longer bundled
+# with the source distribution to avoid warnings about missing files
+# during the build.  When bumping the version, update this line to
+# match the new release notes filename.
+include RELEASE_NOTES_v1.0.md
+include TEST_MATRIX.md
+
+# Include the desktop launcher for the GUI in the source distribution.  Without
+# this rule the .desktop file would not be part of the sdist, which would
+# prevent users from installing it into their local applications directory.
+include mja/resources/mja-gui.desktop
+
+# Explicitly exclude Python cache directories from the sdist.  While
+# setuptools normally excludes these by default, being explicit here
+# communicates the intent to keep the distribution clean of compiled
+# artefacts.
+global-exclude __pycache__
+
+# Exclude artefacts and temporary directories produced by local builds
+prune build
+prune mja.egg-info
+prune dist
+# Exclude any egg-info directories produced by tools other than the package name
+prune *.egg-info
+# Exclude compiled Python bytecode files from the source distribution
+global-exclude *.pyc

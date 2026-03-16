@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=mja GUI
+Comment=GUI for Manjaro AUR isolation orchestrator
+Exec=mja-gui
+Terminal=false
+Icon=system-software-install
+Categories=System;Utility;
+StartupNotify=true
