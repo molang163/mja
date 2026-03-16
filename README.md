@@ -2,6 +2,12 @@
 
 Languages: [English](README.md) | [简体中文](README.zh-CN.md)
 
+> **🎯 Who is this for?**
+> Manjaro/Arch desktop users who want the vast software library of the AUR without risking the stability of their host system. Best for those who prefer a GUI-assisted workflow for containerized package management.
+> 
+> **🛑 Who is this NOT for?**
+> Users of non-Arch distributions (e.g., Ubuntu, Fedora), or those looking for a general-purpose cross-distro package manager.
+
 Tired of AUR packages breaking your Manjaro system? mja is an orchestrator that isolates AUR packages into a Distrobox container, keeping your official host repositories completely untouched.
 
 ![mja GUI ](./docs/screenshot.png)
