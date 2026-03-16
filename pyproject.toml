@@ -59,9 +59,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/molang/mja"
-Repository = "https://github.com/molang/mja"
-Issues = "https://github.com/molang/mja/issues"
+Homepage = "https://github.com/molang163/mja"
+Repository = "https://github.com/molang163/mja"
+Issues = "https://github.com/molang163/mja/issues"
 
 [project.scripts]
 mja = "mja.cli:main"
